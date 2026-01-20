@@ -1,0 +1,44 @@
+#!/bin/bash
+# Git worktree helper with random city names and auto-detection
+set -e
+
+# Resolve symlinks to find actual script location
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+    DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")/.." && pwd)"
+COMMANDS_DIR="$SCRIPT_DIR/commands"
+
+# Show help if no subcommand provided
+if [ -z "$1" ] || [ "$1" = "help" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    echo "Usage: git wt <command> [OPTIONS...]"
+    echo ""
+    echo "Git worktree helper with random city names and auto-detection."
+    echo ""
+    echo "Commands:"
+    for cmd in "$COMMANDS_DIR"/*.sh; do
+        if [ -x "$cmd" ]; then
+            name=$(basename "$cmd" .sh)
+            desc=$(sed -n '2s/^# //p' "$cmd")
+            printf "  %-12s %s\n" "$name" "$desc"
+        fi
+    done
+    echo ""
+    echo "Run 'git wt <command> --help' for more information on a command."
+    exit 0
+fi
+
+subcommand="$1"
+shift
+
+# Check if subcommand exists
+if [ ! -x "$COMMANDS_DIR/$subcommand.sh" ]; then
+    echo "Error: Unknown command '$subcommand'" >&2
+    echo "Run 'git wt help' for available commands" >&2
+    exit 1
+fi
+
+exec "$COMMANDS_DIR/$subcommand.sh" "$@"
