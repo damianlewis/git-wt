@@ -5,29 +5,57 @@
 # World cities for random worktree names (lowercase, single-word)
 CITIES=(
     # Africa
-    accra addis algiers cairo casablanca dakar harare kampala kigali lagos
-    lusaka maputo nairobi rabat tunis
+    abidjan abuja accra addis algiers antananarivo bamako bengazi blantyre
+    cairo capetown casablanca conakry dakar douala durban freetown gaborone
+    harare johannesburg kampala khartoum kigali kinshasa lagos lilongwe
+    lome luanda lusaka luxor maputo marrakech mombasa nairobi ndola oran
+    ouagadougou portlouis pretoria rabat tangier tripoli tunis windhoek
     # Asia
-    amman ankara baghdad baku bangkok beijing busan chengdu chennai colombo
-    delhi dhaka dubai hanoi jakarta jeddah kabul karachi kathmandu kolkata
-    kuala kyoto lahore manila mumbai osaka seoul shanghai shenzhen singapore
-    taipei tehran tokyo ulaanbaatar yangon
+    ahmedabad almaty amman ankara astana baghdad baku bangalore bangkok
+    beijing bengaluru bishkek busan cebu changsha chengdu chennai chittagong
+    chongqing colombo delhi dhaka dushanbe guangzhou guilin hangzhou hanoi
+    hiroshima hochiminhcity hongkong hyderabad incheon islamabad istanbul
+    jakarta jaipur jeddah jerusalem kabul karachi kathmandu kochi kolkata
+    kualalumpur kuwait kyoto lahore lucknow macau makassar malacca mandalay
+    manila mecca medina mumbai muscat nagoya nagpur nanjing osaka peshawar
+    phnom pune phuket pyongyang qingdao quezon riyadh saigon sapporo seoul
+    shanghai shenzhen singapore surabaya surat taipei tashkent tbilisi tehran
+    tianjin tokyo ulaanbaatar vientiane wuhan xian yangon yerevan yokohama
     # Europe
-    amsterdam athens barcelona belgrade berlin bern brussels bucharest
-    budapest copenhagen dublin edinburgh florence geneva glasgow helsinki
-    istanbul kyiv lisbon london madrid marseille milan minsk moscow munich
-    naples oslo paris prague riga rome sofia stockholm tallinn vienna
-    vilnius warsaw zagreb zurich
+    amsterdam antwerp athens barcelona basel belfast belgrade bergen berlin
+    bern bilbao birmingham bologna bordeaux bratislava bremen bristol bruges
+    brussels bucharest budapest cardiff cologne copenhagen cork cracow dublin
+    dusseldorf edinburgh eindhoven essen florence frankfurt gdansk geneva
+    genoa ghent glasgow gothenburg graz hamburg hannover helsinki innsbruck
+    krakow leeds leipzig liege lille lisbon liverpool ljubljana london
+    luxembourg lyon madrid malaga manchester marseille milan minsk monaco
+    moscow munich nantes naples nice nicosia nuremberg oslo palermo paris
+    porto prague reykjavik riga rome rotterdam salzburg sarajevo seville
+    sofia split stockholm strasbourg stuttgart tallinn thessaloniki toulouse
+    turin valencia valletta venice verona vienna vilnius warsaw wroclaw
+    zagreb zaragoza zurich
     # North America
-    atlanta boston calgary chicago dallas denver detroit edmonton houston
-    lasvegas miami montreal nashville newyork ottawa phoenix portland
-    quebec sandiego seattle toronto vancouver
+    albuquerque anchorage atlanta austin baltimore boston calgary charlotte
+    chicago cincinnati cleveland columbus dallas denver detroit edmonton
+    elpaso fortworth guadalajara halifax hamilton havana honolulu houston
+    indianapolis jacksonville kansascity kingston lasvegas louisville memphis
+    mexicocity miami milwaukee minneapolis mississauga monterrey montreal
+    nashville neworleans newyork oakland oklahoma omaha orlando ottawa
+    philadelphia phoenix pittsburgh portland puebla raleigh sacramento
+    saltlake sanantonio sandiego sanfrancisco sanjose sanjuan seattle
+    stlouis tampa tijuana toronto tucson tulsa vancouver vegas victoria
+    winnipeg
     # Oceania
-    adelaide auckland brisbane canberra christchurch darwin hobart melbourne
-    perth sydney wellington
+    adelaide auckland brisbane cairns canberra christchurch darwin dunedin
+    geelong goldcoast hamilton hobart melbourne newcastle perth queenstown
+    sunshine suva sydney tauranga townsville waikato wellington
     # South America
-    asuncion bogota brasilia buenosaires caracas guayaquil lapaz lima
-    medellin montevideo quito recife santiago saopaulo
+    arequipa asuncion barranquilla belem belo bogota brasilia bucaramanga
+    buenosaires cali callao caracas cartagena cordoba curitiba cusco
+    florianopolis fortaleza georgetown guayaquil lapaz lima manaus maracaibo
+    medellin mendoza montevideo paramaribo portoalegre quito recife rio
+    rosario salvador santacruz santiago santodomingo saopaulo sucre
+    valparaiso
 )
 
 # Get names of existing worktrees
