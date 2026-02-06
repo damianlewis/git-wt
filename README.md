@@ -10,7 +10,7 @@ A git worktree helper that simplifies worktree management by automatically assig
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/wt-scripts.git ~/.git-wt
+   git clone https://github.com/damianlewis/git-wt.git ~/.git-wt
    ```
 
 2. Add the `bin` directory to your PATH:
