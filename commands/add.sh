@@ -17,6 +17,7 @@ is generated automatically.
 Options:
 EOF
     get_gtr_options "new"
+    format_option "" "--random-folder" "" "Use a random city name as the worktree folder name"
     format_option "-h" "--help" "" "Show this help message"
     exit 0
 fi
@@ -35,7 +36,7 @@ has_branch_name() {
             --from|--track|--name|--folder)
                 skip_next=true
                 ;;
-            --from-current|--no-copy|--no-fetch|--yes|--force|-e|--editor|-a|--ai)
+            --from-current|--no-copy|--no-fetch|--yes|--force|-e|--editor|-a|--ai|--random-folder)
                 ;;
             -*)
                 ;;
@@ -55,5 +56,15 @@ if ! has_branch_name "${args[@]+"${args[@]}"}"; then
     echo "Using random city: $city"
     args=("$city" "${args[@]+"${args[@]}"}")
 fi
+
+# Replace --random-folder with --folder <random-city>
+for i in "${!args[@]}"; do
+    if [ "${args[$i]}" = "--random-folder" ]; then
+        folder=$(random_city) || exit 1
+        echo "Using random folder: $folder"
+        args=("${args[@]:0:$i}" "--folder" "$folder" "${args[@]:$((i + 1))}")
+        break
+    fi
+done
 
 exec git gtr new "${args[@]}"
