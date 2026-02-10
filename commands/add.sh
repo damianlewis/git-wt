@@ -32,7 +32,7 @@ has_branch_name() {
         fi
 
         case "$arg" in
-            --from|--track|--name)
+            --from|--track|--name|--folder)
                 skip_next=true
                 ;;
             --from-current|--no-copy|--no-fetch|--yes|--force|-e|--editor|-a|--ai)
