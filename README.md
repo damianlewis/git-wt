@@ -4,7 +4,7 @@ A git worktree helper that simplifies worktree management by automatically assig
 
 ## Overview
 
-`git-wt` is a wrapper around [git-gtr](https://github.com/nicholasdille/git-gtr) that adds automatic random city name generation for worktrees. Instead of thinking up branch names, just run `git wt add` and get a memorable city name like `tokyo`, `paris`, or `seattle`.
+`git-wt` is a wrapper around [git-gtr](https://github.com/coderabbitai/git-worktree-runner) that adds automatic random city name generation for worktrees. Instead of thinking up branch names, just run `git wt add` and get a memorable city name like `tokyo`, `paris`, or `seattle`.
 
 ## Installation
 
@@ -18,7 +18,7 @@ A git worktree helper that simplifies worktree management by automatically assig
    export PATH="$HOME/.git-wt/bin:$PATH"
    ```
 
-3. Ensure [git-gtr](https://github.com/nicholasdille/git-gtr) is installed and available in your PATH.
+3. Ensure [git-gtr](https://github.com/coderabbitai/git-worktree-runner) is installed and available in your PATH.
 
 ## Usage
 
@@ -75,14 +75,14 @@ git wt move osaka                # Renames current worktree to "osaka"
 
 ## How It Works
 
-- Maintains a list of 100+ world city names (single-word, lowercase)
+- Maintains a list of 400+ world city names (single-word, lowercase)
 - Automatically excludes cities already in use by existing worktrees
 - Falls back to manual naming if all cities are exhausted
 
 ## Requirements
 
 - Bash 4.0+
-- [git-gtr](https://github.com/nicholasdille/git-gtr)
+- [git-gtr](https://github.com/coderabbitai/git-worktree-runner)
 
 ## License
 
