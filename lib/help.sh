@@ -34,20 +34,22 @@ format_option() {
 get_gtr_options() {
     local cmd="$1"
     local in_options=0
+    local inline_opts=""
+    local detailed_opts=""
 
-    git gtr help 2>/dev/null | while IFS= read -r line; do
+    # Two-pass approach: collect all options first, then print deduplicated
+    local output=""
+
+    output=$(git gtr help 2>/dev/null | while IFS= read -r line; do
         # Start capturing when we hit the command
         if [[ "$line" =~ ^"  $cmd " ]] || [[ "$line" =~ ^"  $cmd|" ]]; then
             in_options=1
 
-            # Parse inline options from the command line itself (e.g., "list [--porcelain]")
-            # Extract all [--option] patterns
+            # Collect inline [--option] patterns from the summary line
             local remaining="$line"
             while [[ "$remaining" =~ \[--([a-zA-Z-]+)\] ]]; do
-                local opt="${BASH_REMATCH[1]}"
-                format_option "" "--$opt" "" ""
-                # Remove the matched pattern to continue searching
-                remaining="${remaining#*\[--$opt\]}"
+                inline_opts="$inline_opts|${BASH_REMATCH[1]}"
+                remaining="${remaining#*\[--${BASH_REMATCH[1]}\]}"
             done
 
             continue
@@ -56,6 +58,16 @@ get_gtr_options() {
         # Stop at empty line or next command
         if [ "$in_options" -eq 1 ]; then
             if [ -z "$line" ] || [[ "$line" =~ ^"  "[a-z] ]]; then
+                # Print any inline options that had no detailed counterpart
+                if [ -n "$inline_opts" ]; then
+                    local IFS='|'
+                    for opt in $inline_opts; do
+                        [ -z "$opt" ] && continue
+                        if [[ "$detailed_opts" != *"|$opt|"* ]]; then
+                            format_option "" "--$opt" "" ""
+                        fi
+                    done
+                fi
                 break
             fi
 
@@ -88,10 +100,17 @@ get_gtr_options() {
                     arg="$line"
                 fi
 
+                # Track this option as detailed
+                if [ -n "$long" ]; then
+                    detailed_opts="$detailed_opts|${long#--}|"
+                fi
+
                 format_option "$short" "$long" "$arg" "$desc"
             fi
         fi
-    done
+    done)
+
+    [ -n "$output" ] && echo "$output"
 }
 
 # Format an example line

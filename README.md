@@ -58,6 +58,21 @@ git wt rm tokyo               # Alias for remove
 
 If you're inside a worktree, the command will detect it and guide you to run from the main repository.
 
+#### move (mv)
+
+Rename a worktree and its branch:
+
+```bash
+git wt move tokyo osaka
+git wt mv tokyo osaka            # Alias for move
+```
+
+If you're inside a worktree, only the new name is needed:
+
+```bash
+git wt move osaka                # Renames current worktree to "osaka"
+```
+
 ## How It Works
 
 - Maintains a list of 100+ world city names (single-word, lowercase)
