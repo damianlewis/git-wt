@@ -36,8 +36,6 @@ has_branch_name() {
             --from|--track|--name|--folder)
                 skip_next=true
                 ;;
-            --from-current|--no-copy|--no-fetch|--yes|--force|-e|--editor|-a|--ai|--random-folder)
-                ;;
             -*)
                 ;;
             *)
