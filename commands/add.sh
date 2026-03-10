@@ -1,23 +1,23 @@
 #!/bin/bash
-# Add a new worktree with random city name
+# Add a new worktree with random name
 set -e
 
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
 source "$SCRIPT_DIR/lib/help.sh"
-source "$SCRIPT_DIR/lib/cities.sh"
+source "$SCRIPT_DIR/lib/words.sh"
 
 # Show help
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     cat <<EOF
 Usage: git wt add [<branch>] [OPTIONS...]
 
-Add a new git worktree. If no branch name is provided, a random city name
+Add a new git worktree. If no branch name is provided, a random name
 is generated automatically.
 
 Options:
 EOF
     get_gtr_options "new"
-    format_option "" "--random-folder" "" "Use a random city name as the worktree folder name"
+    format_option "" "--random-folder" "" "Use a random name as the worktree folder name"
     format_option "-h" "--help" "" "Show this help message"
     exit 0
 fi
@@ -50,15 +50,15 @@ has_branch_name() {
 args=("$@")
 
 if ! has_branch_name "${args[@]+"${args[@]}"}"; then
-    city=$(random_city) || exit 1
-    echo "Using random city: $city"
-    args=("$city" "${args[@]+"${args[@]}"}")
+    name=$(random_name) || exit 1
+    echo "Using random name: $name"
+    args=("$name" "${args[@]+"${args[@]}"}")
 fi
 
-# Replace --random-folder with --folder <random-city>
+# Replace --random-folder with --folder <random-name>
 for i in "${!args[@]}"; do
     if [ "${args[$i]}" = "--random-folder" ]; then
-        folder=$(random_city) || exit 1
+        folder=$(random_name) || exit 1
         echo "Using random folder: $folder"
         args=("${args[@]:0:$i}" "--folder" "$folder" "${args[@]:$((i + 1))}")
         break

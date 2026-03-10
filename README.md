@@ -1,10 +1,10 @@
 # git-wt
 
-A git worktree helper that simplifies worktree management by automatically assigning random city names for easy identification.
+A git worktree helper that simplifies worktree management by automatically assigning random names for easy identification.
 
 ## Overview
 
-`git-wt` is a wrapper around [git-gtr](https://github.com/coderabbitai/git-worktree-runner) that adds automatic random city name generation for worktrees. Instead of thinking up branch names, just run `git wt add` and get a memorable city name like `tokyo`, `paris`, or `seattle`.
+`git-wt` is a wrapper around [git-gtr](https://github.com/coderabbitai/git-worktree-runner) that adds automatic random name generation for worktrees. Instead of thinking up branch names, just run `git wt add` and get a memorable name like `swift-falcon`, `golden-harbor`, or `misty-canyon`.
 
 ## Installation
 
@@ -30,11 +30,11 @@ git wt <command> [options]
 
 #### add
 
-Add a new worktree with an auto-generated random city name:
+Add a new worktree with an auto-generated random name:
 
 ```bash
-git wt add                    # Creates worktree with random city name
-git wt add tokyo              # Creates worktree named "tokyo"
+git wt add                    # Creates worktree with random name (e.g., swift-falcon)
+git wt add my-feature         # Creates worktree named "my-feature"
 git wt add --from main        # Creates from specific branch
 ```
 
@@ -52,8 +52,8 @@ git wt ls                     # Alias for list
 Remove a worktree:
 
 ```bash
-git wt remove tokyo
-git wt rm tokyo               # Alias for remove
+git wt remove swift-falcon
+git wt rm swift-falcon        # Alias for remove
 ```
 
 If you're inside a worktree, the command will detect it and guide you to run from the main repository.
@@ -63,21 +63,30 @@ If you're inside a worktree, the command will detect it and guide you to run fro
 Rename a worktree and its branch:
 
 ```bash
-git wt move tokyo osaka
-git wt mv tokyo osaka            # Alias for move
+git wt move swift-falcon bold-cedar
+git wt mv swift-falcon bold-cedar   # Alias for move
 ```
 
 If you're inside a worktree, only the new name is needed:
 
 ```bash
-git wt move osaka                # Renames current worktree to "osaka"
+git wt move bold-cedar           # Renames current worktree to "bold-cedar"
+```
+
+#### reset-names
+
+Clear the name history, making all names available again:
+
+```bash
+git wt reset-names
 ```
 
 ## How It Works
 
-- Maintains a list of 400+ world city names (single-word, lowercase)
-- Automatically excludes cities already in use by existing worktrees
-- Falls back to manual naming if all cities are exhausted
+- Generates random adjective-noun names (e.g., `swift-falcon`, `misty-canyon`)
+- 400 adjectives × 400 nouns = 160,000 unique combinations
+- Tracks used names globally in `~/.config/git-wt/used-names` so names are never reused, even after worktrees are deleted
+- Use `git wt reset-names` to clear the history if needed
 
 ## Requirements
 
