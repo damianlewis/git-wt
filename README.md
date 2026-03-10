@@ -90,9 +90,5 @@ git wt reset-names
 
 ## Requirements
 
-- Bash 4.0+
+- Bash 3.2+
 - [git-gtr](https://github.com/coderabbitai/git-worktree-runner)
-
-## License
-
-MIT
