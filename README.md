@@ -9,11 +9,13 @@ A git worktree helper that simplifies worktree management by automatically assig
 ## Installation
 
 1. Clone this repository:
+
    ```bash
    git clone https://github.com/damianlewis/git-wt.git ~/.git-wt
    ```
 
 2. Add the `bin` directory to your PATH:
+
    ```bash
    export PATH="$HOME/.git-wt/bin:$PATH"
    ```
